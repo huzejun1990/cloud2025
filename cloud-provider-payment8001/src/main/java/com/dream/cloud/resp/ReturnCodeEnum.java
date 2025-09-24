@@ -58,9 +58,51 @@ public enum ReturnCodeEnum {
     BUSINESS_ERROR("1004", "业务逻辑异常"),
     UNSUPPORTED_GRANT_TYPE("1003", "不支持的认证模式");
 
-    //如何定一个通用的枚举类,对于枚举编写,小口诀
+    //如何定义一个通用的枚举类，对于枚举编写
     //举值-构造-遍历
 
+    //2.构造
+    private final String code;    //自定义的状态码
+    private final String message; //自定义的描述信息
+
+    ReturnCodeEnum(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+    //3 遍历
+    //3.1 传统版
+    public static ReturnCodeEnum getReturnCodeEnumV1(String code) {
+
+        for (ReturnCodeEnum element : ReturnCodeEnum.values()) {
+            if (element.getCode().equalsIgnoreCase(code)) {
+                return element;
+            }
+        }
+        return null;
+    }
+
+    //3.2 Stream流式计算版
+    public static ReturnCodeEnum getReturnCodeEnumV2(String code) {
+        return Arrays.stream(ReturnCodeEnum.values()).filter(x -> x.getCode().equalsIgnoreCase(code)).findFirst().orElse(null);
+    }
+
+/*    public static void main(String[] args) {
+        System.out.println(getReturnCodeEnumV1("200"));
+        System.out.println(getReturnCodeEnumV1("200").getCode());
+        System.out.println(getReturnCodeEnumV1("200").getMessage());
+
+        System.out.println();
+
+        System.out.println(getReturnCodeEnumV2("404"));
+        System.out.println(getReturnCodeEnumV2("404").getCode());
+        System.out.println(getReturnCodeEnumV2("404").getMessage());
+    }*/
+
+
+    //如何定一个通用的枚举类,对于枚举编写,小口诀
+    //举值-构造-遍历
+/*
     //2.构造
     private final String code;//自定义的状态码
     private final String message;//自定义的描述信息
@@ -85,5 +127,5 @@ public enum ReturnCodeEnum {
     //3.2Stream流式计算版
     public static ReturnCodeEnum getReturnCodeEnumV2(String code) {
         return Arrays.stream(ReturnCodeEnum.values()).filter(x -> x.getCode().equalsIgnoreCase(code)).findFirst().orElse(null);
-    }
+    }*/
 }
