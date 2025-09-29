@@ -23,7 +23,8 @@ import java.util.List;
 public class OrderController {
 
     //    public static final String PaymentSrv_URL = "/payment-order";
-    public static final String PaymentSrv_URL = "http://localhost:8001";    //先写死，硬编码
+//    public static final String PaymentSrv_URL = "http://localhost:8001";    //先写死，硬编码
+    public static final String PaymentSrv_URL = "http://cloud-payment-service";     //服务注册上的微服务名称
 
     @Resource
     private RestTemplate restTemplate;
