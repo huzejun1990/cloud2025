@@ -44,4 +44,3 @@ spring:
           filters:
             - AddRequestHeader=X-Request-dream1,dreamValue1  # 请求头kv，若一头含有多参则重写一行设置
             - AddRequestHeader=X-Request-dream2,dreamValue2
-            #- RemoveRequestHeader=sec-fetch-site      # 删除请求头
