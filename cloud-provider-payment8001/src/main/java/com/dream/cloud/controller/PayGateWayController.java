@@ -1,13 +1,17 @@
 package com.dream.cloud.controller;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
 import com.dream.cloud.entities.Pay;
 import com.dream.cloud.resp.ResultData;
 import com.dream.cloud.service.PayService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Enumeration;
 
 /**
  * @Author huzejun
@@ -28,6 +32,22 @@ public class PayGateWayController {
     @GetMapping(value = "/pay/gateway/info")
     public ResultData<String> getGatewayInfo() {
         return ResultData.success("gateway info test: "+ IdUtil.simpleUUID());
+    }
+
+    @GetMapping(value = "/pay/gateway/filter")
+    public ResultData<String> getGatewayFilter(HttpServletRequest request) {
+        String result = "";
+        Enumeration<String> headers = request.getHeaderNames();
+        while (headers.hasMoreElements()) {
+            String headName = headers.nextElement();
+            String headerValue = request.getHeader(headName);
+            System.out.println("请求头名："+headName + "\t\t\t"+"请求头值："+headerValue);
+            if (headName.equalsIgnoreCase("X-Request-dream1")
+                || headName.equalsIgnoreCase("X-Request-dream2")){
+                result = result + headName + "\t\t\t" + headerValue +" ";
+            }
+        }
+        return  ResultData.success("gateGatewayFilter 过滤器 test:"+result+"\t"+ DateUtil.now());
     }
 
 }
