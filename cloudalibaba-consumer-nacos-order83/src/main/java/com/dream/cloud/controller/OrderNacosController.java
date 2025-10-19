@@ -1,5 +1,7 @@
 package com.dream.cloud.controller;
 
+import com.dream.cloud.apis.PayFeignSentinelApi;
+import com.dream.cloud.resp.ResultData;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,15 @@ public class OrderNacosController {
 
         return result+"\t"+"   我是OrderNacosController83调用者。。。。。。";
 
+    }
+
+    //========================
+    @Resource
+    private PayFeignSentinelApi payFeignSentinelApi;
+
+    @GetMapping(value = "/consumer/pay/nacos/get/{orderNo}")
+    public ResultData getPayByOrderNo(@PathVariable("orderNo") String orderNo) {
+        return payFeignSentinelApi.getPayByOrderNo(orderNo);
     }
 
 }
