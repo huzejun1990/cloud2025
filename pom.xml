@@ -21,6 +21,9 @@
         <module>cloudalibaba-config-nacos-client3377</module>
         <module>cloudalibaba-sentinel-service8401</module>
         <module>cloudalibaba-sentinel-gateway9528</module>
+        <module>seata-order-service2001</module>
+        <module>seata-storage-service2002</module>
+        <module>seata-account-service2003</module>
     </modules>
 
     <properties>
@@ -31,7 +34,7 @@
         <lombok.version>1.18.26</lombok.version>
         <druid.version>1.1.20</druid.version>
         <mybatis.springboot.version>3.0.2</mybatis.springboot.version>
-        <mysql.version>5.1.8</mysql.version> <!--5.1.7应用mysql5 8.0.11应用mysql8 -->
+        <mysql.version>8.0.11</mysql.version><!--5.1.7应用mysql5 8.0.11应用mysql8 -->
         <swagger3.version>2.2.0</swagger3.version>
         <mapper.version>4.2.3</mapper.version>
         <fastjson2.version>2.0.40</fastjson2.version>
